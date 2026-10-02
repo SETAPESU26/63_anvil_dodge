@@ -44,19 +44,19 @@ Each task must be completed using an iterative process involving LLM suggestions
 
 ### Task 1: Fix the player off-screen boundary bug
 
-The player is supposed to stay inside the visible left and right boundaries of the screen. In the current build, player.update() has no boundary checks, allowing the player to walk indefinitely off the left or right edges of the screen where anvils cannot hit them, achieving infinite survival time. Implement horizontal bounds in player.update() so the player cannot step past 0 or self.screen_width - self.width.
+The player character can walk past the left and right screen edges into hidden space where falling anvils cannot hit them, exploiting an infinite survival time. Constrain the player so movement is strictly clamped within the visible boundaries of the display window.
 
 ### Task 2: Implement dynamic difficulty scaling
 
-Right now, anvils spawn at a constant interval of 700ms throughout the entire run. Implement logic in game_engine.update() to decrease spawn_delay as survival_time increases (for example, reducing the delay gradually down to a minimum cap of 200ms), making the game progressively more challenging over time.
+The player character can walk past the left and right screen edges into hidden space where falling anvils cannot hit them, exploiting an infinite survival time. Constrain the player so movement is strictly clamped within the visible boundaries of the display window.
 
-### Task 3: Implement speed-based anvil tinting
+### Task 3: Implement speed-based anvil warning tints
 
-All falling anvils currently share identical shades of grey. In anvil.render(), introduce dynamic color tinting based on each anvil's randomized falling speed (self.speed). Fast-falling anvils should render with an orange or red accent, warning the player of rapid hazards.
+All falling hazards currently share the same grey appearance regardless of velocity. Apply visual hazard tiers to falling anvils by tinting higher-velocity anvils with distinct hot warning colors to signal urgent threats to the player.
 
-### Task 4: Implement ground impact effects
+### Task 4: Implement ground impact FX & screen shake
 
-When an anvil leaves the bottom of the screen, it is silently removed from the game. Add a brief visual effect—such as a small dust puff, ground particles, or screen-shake vibration—whenever an anvil strikes the ground before being removed.
+Anvils reaching the floor vanish silently without physical presence. Add kinetic feedback on impact—such as localized dust cloud particles or a subtle camera shake whenever an anvil smashes into the ground line.
 
 ---
 
