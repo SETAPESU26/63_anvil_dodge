@@ -19,8 +19,6 @@ class Player:
         self.x += self.speed
 
     def update(self):
-        #BUG SYMPTOM: 
-        #Player can move completely off-screen
         pass
 
     @property
